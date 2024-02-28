@@ -6,6 +6,9 @@ from django.http import JsonResponse
 def home(request):
     return render(request,'index.html')
 
+def AuthenticatePage(request):
+    return render(request,'login.html')
+
 def upload_image(request):
     if request.method == 'POST' and request.FILES.get('image'):
         image = request.FILES['image']
@@ -25,3 +28,4 @@ def handle_get_request(request,image_name):
         return JsonResponse({'message': 'Received filename: {}'.format(image_name)})
     else:
         return JsonResponse({'error': 'No filename provided.'}, status=400)
+    
